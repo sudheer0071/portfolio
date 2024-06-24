@@ -1,21 +1,14 @@
 "use client"
-import React, { useEffect } from "react";
+import React from "react";
 import { TracingBeam } from "@/components/ui/TracingScoll";
 import ProjectCard from "@/components/Project_card";
 import { HeroHighlight } from "@/components/ui/DotBeackground";
 
 import Skills from "@/components/skills";
 import Navbar from "@/components/NavBar";
-import AboutMe from "@/components/About";
-import { useRecoilState } from "recoil";
-import { aboutState, projectState, skillState } from "./recoilContextProvider";
+import AboutMe from "@/components/About"; 
 
-export default function GridBackgroundDemo() {
-
-  const [about, setAbout] = useRecoilState(aboutState)
-  const [skill, setSkill] = useRecoilState(skillState)
-  const [project, setproject] = useRecoilState(projectState)
-
+export default function GridBackgroundDemo() { 
   // useEffect(()=>{
 
   //   setAbout(true);

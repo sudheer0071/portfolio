@@ -10,6 +10,7 @@ import { TypewriterEffect } from "./ui/TypeWriter";
 import { GithubIcon, LinkedinIcon, Mail } from "lucide-react";
 import { useRecoilState } from "recoil";
 import { aboutState, projectState, skillState } from "@/app/recoilContextProvider";
+import Image from "next/image";
  
 
 const words = [
@@ -139,7 +140,7 @@ const projects = [
       }, 
     ],
     description:"Swasthlekh web app, The project's objective is to enhance the efficiency of the entire hospital system by streamlining patient-doctor interactions",
-    techStack:['react','typescript-icon','react','typescript-icon','react','typescript-icon'],
+    techStack:['react.svg','tailwind.png','typescript-icon.svg','nodejs.png','express.png','prisma.png','postgres.png','cloudvision.svg','google-cloud.svg'],
     live:"swasthlekh.vercel.app",
     git:"swasthlekh", 
     src:"swasthlekh_home"
@@ -261,13 +262,13 @@ const projects = [
       },  
     ], 
     description:"Medium Clone with more interactive interface where anyone can post blogs and edit them.",
-    techStack:['react','typescript-icon','react','typescript-icon','react','typescript-icon'],
+    techStack:['react.svg','tailwind.png','typescript-icon.svg','nodejs.png','express.png','prisma.png','postgres.png','cloudflare.svg' ],
     live:"medium-chindi.vercel.app/signup",
     git:"Medium-blogs",
     src:"medium_home", 
   },  
   { 
-    title:"Medium",
+    title:"Portfolio",
     details:[ 
       {
       header:'Easy to use and access blogs:',
@@ -317,7 +318,7 @@ const projects = [
         className: "text-white font-semibold dark:text-blue-500",
       },  
     ], 
-    description:"Medium Clone with more interactive interface where anyone can post blogs and edit them.",
+    description:"A simple portfolio made with <3 by me. ",
     techStack:['react','typescript-icon','react','typescript-icon','react','typescript-icon'],
     live:"medium-chindi.vercel.app/signup",
     git:"Medium-blogs",
@@ -423,9 +424,14 @@ const [project, setProject] = useRecoilState(projectState)
           <CardItem translateZ={100} className=" w-full mt-4">  
             <img src={`https://pub-e8df4856c93040158123b7cc75760e95.r2.dev/${project.src}.png`} height={1000} width={1000} className=" h-60 w-full rounded-xl g group-hover/card:shadow-2xl group-hover/card:shadow-black-500" alt="swasthlekh " />
           </CardItem> 
-          <div className=" flex hover:flex items-center mt-7 gap-3 text-white">
+          <div className="flex justify-center items-center mt-7 gap-5 text-white">
           {project.techStack.map((tech,idx)=>(
-            <img key={idx} width={30} height={30} src={`https://www.shivamlather.social/${tech}.svg`} alt="" />
+            <Image
+            src={`/${tech}`}
+            key={idx} width={30} height={30}
+            alt={tech}
+            />
+            
           ))}
           </div>
           <div className=" flex justify-between items-center mt-16">

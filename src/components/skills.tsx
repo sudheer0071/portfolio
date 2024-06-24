@@ -51,7 +51,7 @@ const backendSkills = [
   {
     id: 3,
     name: "Prisma",
-    icon: "/image.png",
+    icon: "/prisma.png",
   },
 ];
 
@@ -204,7 +204,7 @@ const [project, setProject] = useRecoilState(projectState)
                 className={` ${space.className} relative h-full rounded border-t-[1px] border-l-[1px] border-[#374151] bg-[#1e1e2e] px-4 py-3 text-md text-white  transition duration-100 flex items-center gap-2 justify-center w-[150px] md:w-[160px]`}
               >
                 <Image
-                  src={skill.icon}
+                  src={`${skill.icon}`}
                   width={25}
                   height={25}
                   alt={skill.name}

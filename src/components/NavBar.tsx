@@ -1,46 +1,24 @@
  "use client"
-import React, { useEffect, useState } from "react";
-import { FloatingNav } from "@/components/ui/FloatingNav";
-import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
-import { MotionConfig, motion } from "framer-motion";
-import { useRouter } from "next/navigation";
-import { aboutState, projectState, skillState } from "@/app/recoilContextProvider";
-import { useRecoilState } from "recoil";
-import { BackgroundGradient } from "./ui/Outline";
-import Image from "next/image";
-export default function Navbar() {
-  const router = useRouter()
-  const navItems = [
-    {
-      name: "Home",
-      link: "/",
-      icon: <IconHome className="h-4 w-4 text-neutral-500 dark:text-white" />,
-    },
-    {
-      name: "About",
-      link: "/about",
-      icon: <IconUser className="h-4 w-4 text-neutral-500 dark:text-white" />,
-    },
-    {
-      name: "Contact",
-      link: "/contact",
-      icon: (
-        <IconMessage className="h-4 w-4 text-neutral-500 dark:text-white" />
-      ),
-    },
-  ];
+import React, { useState } from "react"; 
+import { MotionConfig, motion } from "framer-motion"; 
+import { aboutState, contactState, projectState, skillState } from "@/app/recoilContextProvider";
+import { useRecoilState } from "recoil"; 
+export default function Navbar() { 
 
   const [about, setAbout] = useRecoilState(aboutState)
   const [skill, setSkill] = useRecoilState(skillState)
   const [project, setProject] = useRecoilState(projectState)
+  const [contact, setContact] = useRecoilState(contactState)
 
   const [aboutHover, setAboutHover] = useState(false)
   const [skillHover, setSkillHover] = useState(false)
   const [projectHover, setProjectHover] = useState(false)
+  const [contactHover, setContactHover] = useState(false)
   
 console.log(about);
 console.log(skill);
 console.log(project);
+console.log(contact);
 
 console.log("hover states");
 console.log(aboutHover);
@@ -50,9 +28,9 @@ console.log(projectHover);
 
 
   return (
-    <div>
-      <BackgroundGradient className=" rounded-[22px] max-w-sm p-4 sm:p-10 bg-zinc-900" >
-    <div className=" z-50 font-medium top-1 fixed backdrop-blur-sm rounded-full flex justify-center px-9 py-5">
+    <div className=" flex justify-center">                        
+   
+    <div id="box" className="  shadow-sm shadow-white z-50 fixed font-medium top-1  backdrop-blur-sm rounded-full px-3 py-2">
        <div className="  flex gap-32"> 
        <MotionConfig
         transition={{
@@ -68,6 +46,7 @@ console.log(projectHover);
       setSkillHover(false);
       setProjectHover(false);
       setAboutHover(true);
+      setContactHover(false)
     }}
     onHoverEnd={() => {
       setAboutHover(false);
@@ -78,20 +57,21 @@ console.log(projectHover);
       setSkill(false);
       setProject(false);
       setAbout(true);
+      setContact(false)
     }}
     className="p-4 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in bg-transparent text-zinc-100"
     href="/#About"
   >
     <span className="font-jetbrain text-xl text-foreground">About</span>
     <motion.div
-      animate={about?{  x: projectHover ? 415 : skillHover ? 200 : 0, width: projectHover ? 130 : 100 }:''} 
+      animate={about?{  x: contactHover?670 : projectHover ? 417 : skillHover ? 210 : 0, width: projectHover ? 130 : 100 }:''} 
        
       transition={{
         type: "spring",
         stiffness: 200,
         damping: projectHover ? 10 : 7,
       }}
-      className={`absolute -z-10 bottom-0 left-0 h-full ${about ? 'bg-[#CBA5F7]/70' : ''} rounded-full`}
+      className={`absolute -z-10 bottom-0 left-0 h-full ${about ? 'bg-[#93a5f3]/70' : ''} rounded-full`}
       aria-hidden="true"
       style={{ width: "100%", opacity: 1 }}
     />
@@ -99,6 +79,7 @@ console.log(projectHover);
 
   <motion.a
     onHoverStart={() => {
+      setContactHover(false)
       setProjectHover(false);
       setSkillHover(true);
       setAboutHover(false);
@@ -108,7 +89,7 @@ console.log(projectHover);
     }}
     onClick={() => {
       console.log('skill clicked'); 
-
+setContact(false)
       setAbout(false);
       setProject(false);
       setSkill(true);
@@ -119,10 +100,10 @@ console.log(projectHover);
     <span className="font-jetbrain text-xl text-foreground">Skills</span>
     <motion.div
       animate={skill?{
-        x: aboutHover ? -220 : projectHover ? 190 : 0,
-        width: aboutHover ? 100 : projectHover ? 140 : 80,
+        x: aboutHover ? -220 : projectHover ? 200 : contactHover? 440 : 0,
+        width: aboutHover ? 98 : projectHover ? 130 :contactHover?125: 80,
       }:''} 
-      className={` -z-10 absolute bottom-0 left-0 h-full ${skill ? 'bg-[#CBA6F7]/70' : ''} rounded-full`}
+      className={` -z-10 absolute bottom-0 left-0 h-full ${skill ? 'bg-[#93a5f3]/70' : ''} rounded-full`}
       aria-hidden="true"
       style={{ width: "100%", opacity: 1 }}
     />
@@ -130,6 +111,7 @@ console.log(projectHover);
 
   <motion.a
     onHoverStart={() => {
+      setContactHover(false)
       setSkillHover(false);
       setProjectHover(true);
       setAboutHover(false);
@@ -139,7 +121,7 @@ console.log(projectHover);
     }}
     onClick={() => {
       console.log("project clicked"); 
-
+  setContact(false)
       setAbout(false);
       setSkill(false);
       setProject(true);
@@ -150,10 +132,41 @@ console.log(projectHover);
     <span className="font-jetbrain text-xl text-foreground">Projects</span>
     <motion.div
       animate={project?{
-        x: aboutHover ? -430 : skillHover ? -210 : -20,
+        x: aboutHover ? -430 : skillHover ? -210 : contactHover? 100: -20,
         width: aboutHover ? 100 : skillHover ? 88 : 150,
       }:""}
-      className={`absolute -z-10 bottom-0 left-0 h-full ${project ? 'bg-[#CBA6F7]/70' : ''} rounded-full`}
+      className={`absolute -z-10 bottom-0 left-0 h-full ${project ? 'bg-[#93a5f3]/70' : ''} rounded-full`}
+      aria-hidden="true"
+      style={{ width: "100%", opacity: 1 }}
+    />
+  </motion.a> 
+  <motion.a
+    onHoverStart={() => {
+      setContactHover(true)
+      setSkillHover(false);
+      setProjectHover(false);
+      setAboutHover(false);
+    }}
+    onHoverEnd={() => {
+      setContactHover(false);
+    }}
+    onClick={() => {
+      console.log("project clicked"); 
+  setContact(true)
+      setAbout(false);
+      setSkill(false);
+      setProject(false);
+    }}
+    className="p-4 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in bg-transparent text-zinc-100"
+    href="/#"
+  >
+    <span className="font-jetbrain text-xl text-foreground">Contact</span>
+    <motion.div
+      animate={contact?{
+        x: aboutHover ? -670 : skillHover ? -450 : projectHover? -240 : -8,
+        width: aboutHover ? 100 : skillHover ? 88 : 120,
+      }:""}
+      className={`absolute -z-10 bottom-0 left-0 h-full ${contact ? 'bg-[#93a5f3]/70' : ''} rounded-full`}
       aria-hidden="true"
       style={{ width: "100%", opacity: 1 }}
     />
@@ -161,10 +174,8 @@ console.log(projectHover);
       </MotionConfig>
     </div> 
        
-    </div> 
-        
-      </BackgroundGradient>
-    </div>
+    </div>  
+    </div>               
   );
 }
  

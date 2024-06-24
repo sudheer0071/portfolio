@@ -1,5 +1,5 @@
 "use client"
-import React, { useEffect } from "react";
+import React from "react";
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { CircleCheck, GithubIcon, LinkedinIcon, Mail } from 'lucide-react'; 
 import { HoverBorderGradient } from "@/components/ui/Button"; 
@@ -15,19 +15,12 @@ import { IconClipboard } from "@tabler/icons-react";
 import { useRecoilState } from "recoil";
 import { aboutState, projectState, skillState } from "@/app/recoilContextProvider";
 
-export default function AboutMe(){
-  const [about, setAbout] = useRecoilState(aboutState)
-  const [skill, setSkill] = useRecoilState(skillState)
-  const [project, setProject] = useRecoilState(projectState)
-  
+export default function AboutMe(){ 
   // useEffect(()=>{
   //   setAbout(true)
   //   setSkill(false)
   //   setProject(false)
-  // },[about])
-  console.log(about);
-  console.log(skill);
-  console.log(project);
+  // },[about]) 
   
 
   const words = [

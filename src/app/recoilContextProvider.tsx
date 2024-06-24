@@ -16,6 +16,10 @@ export const projectState = atom({
   key:'project',
   default:false
 }) 
+export const contactState = atom({
+  key:'contact',
+  default:false
+}) 
 
 export default function RecoilContextProvider({ children }:any){
   return <RecoilRoot>{children}</RecoilRoot>
