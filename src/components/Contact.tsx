@@ -58,7 +58,7 @@ export default function Contact(){
         <div className=" justify-center flex"> 
         <DockIcon/>
         </div>
-        <a href="/sudheer_chaurasia.pdf">
+        <a href="/sudheer_chaurasia.pdf" target="_blank">
         <span>My CV</span></a>
       </div>
       <div>
