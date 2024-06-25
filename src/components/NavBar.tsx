@@ -30,7 +30,7 @@ console.log(projectHover);
   return (
     <div className=" flex justify-center">                        
    
-    <div id="box" className="  shadow-sm shadow-white z-50 fixed font-medium top-1  backdrop-blur-sm rounded-full px-3 py-2">
+    <div id="box" className="  shadow-lg shadow-gray-500 z-50 fixed font-medium top-1  backdrop-blur-sm rounded-full px-3 py-2">
        <div className="  flex gap-32"> 
        <MotionConfig
         transition={{
@@ -69,7 +69,7 @@ console.log(projectHover);
       transition={{
         type: "spring",
         stiffness: 200,
-        damping: projectHover ? 10 : 7,
+        damping: projectHover|| contactHover ? 10 : 7,
       }}
       className={`absolute -z-10 bottom-0 left-0 h-full ${about ? 'bg-[#93a5f3]/70' : ''} rounded-full`}
       aria-hidden="true"
@@ -132,8 +132,8 @@ setContact(false)
     <span className="font-jetbrain text-xl text-foreground">Projects</span>
     <motion.div
       animate={project?{
-        x: aboutHover ? -430 : skillHover ? -210 : contactHover? 100: -20,
-        width: aboutHover ? 100 : skillHover ? 88 : 150,
+        x: aboutHover ? -430 : skillHover ? -210 : contactHover? 230: -20,
+        width: aboutHover ? 100 : skillHover ? 88 :contactHover?120: 150,
       }:""}
       className={`absolute -z-10 bottom-0 left-0 h-full ${project ? 'bg-[#93a5f3]/70' : ''} rounded-full`}
       aria-hidden="true"
@@ -158,7 +158,7 @@ setContact(false)
       setProject(false);
     }}
     className="p-4 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in bg-transparent text-zinc-100"
-    href="/#"
+    href="/#Contact"
   >
     <span className="font-jetbrain text-xl text-foreground">Contact</span>
     <motion.div
@@ -166,6 +166,11 @@ setContact(false)
         x: aboutHover ? -670 : skillHover ? -450 : projectHover? -240 : -8,
         width: aboutHover ? 100 : skillHover ? 88 : 120,
       }:""}
+      transition={{
+        type: "spring",
+        stiffness: 200,
+        damping: aboutHover|| skillHover ? 10 : 7,
+      }}
       className={`absolute -z-10 bottom-0 left-0 h-full ${contact ? 'bg-[#93a5f3]/70' : ''} rounded-full`}
       aria-hidden="true"
       style={{ width: "100%", opacity: 1 }}

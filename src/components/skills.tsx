@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React, { useEffect } from "react";
+import React  from "react";
 import { Space_Grotesk } from "next/font/google";
 import { motion } from "framer-motion";
 import { useRecoilState } from "recoil";
@@ -30,6 +30,18 @@ const fronendskills = [
     name: "Javascript",
     icon: "/js.png",
   },
+  
+  
+  {
+    id: 5,
+    name: "Python",
+    icon: "/python.svg",
+  },
+  {
+    id: 6,
+    name: "C++",
+    icon: "/cpp.svg",
+  },
 ];
 
 const backendSkills = [
@@ -50,6 +62,11 @@ const backendSkills = [
   },
   {
     id: 3,
+    name: "Django",
+    icon: "/django.svg",
+  },
+  {
+    id: 4,
     name: "Prisma",
     icon: "/prisma.png",
   },
@@ -70,6 +87,11 @@ const databases = [
     id: 2,
     name: "Redis",
     icon: "/redis.png",
+  },
+  {
+    id: 3,
+    name: "SQLite",
+    icon: "/sqlite.svg",
   },
 ];
 
@@ -99,8 +121,8 @@ const tools_2 = [
   },
   {
     id: 2,
-    name: "Neovim",
-    icon: "/neovim.png",
+    name: "IntelliJ",
+    icon: "/intellij.svg",
   },
 ];
 

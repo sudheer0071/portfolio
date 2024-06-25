@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
-import { HoverBorderGradient } from "@/components/ui/Button";
-import { TracingBeam } from "@/components/ui/TracingScoll";
-import { Scada, Tourney } from "next/font/google";
+import { HoverBorderGradient } from "@/components/ui/Button"; 
 import { motion } from "framer-motion";
 import SparkleHeader from "./SparkleHeader";
-import { TypewriterEffect } from "./ui/TypeWriter";
-import { GithubIcon, LinkedinIcon, Mail } from "lucide-react";
+import { TypewriterEffect } from "./ui/TypeWriter"; 
 import { useRecoilState } from "recoil";
 import { aboutState, projectState, skillState } from "@/app/recoilContextProvider";
 import Image from "next/image";
@@ -205,7 +202,7 @@ const projects = [
         
     ], 
     description:"The primary goal is to gain a deep understanding of how these algorithms work by coding them manually. By implementing algorithms like linear regression and logistic regression, we can explore their inner workings, mathematical foundations, and practical applications.",
-    techStack:['react','typescript-icon','react','typescript-icon','react','typescript-icon'],
+    techStack:['python.svg','sciket.png','pypi.svg' ],
     live:"ml",
     git:"MLHybridX-Module",
     src:"mlxhybrid", 
@@ -271,65 +268,68 @@ const projects = [
     title:"Portfolio",
     details:[ 
       {
-      header:'Easy to use and access blogs:',
-      description:"Read the blogs from anywhere in the globe posted by anyone with more user freiendly and simple UI."
+      header:'Why these animtions?',
+      description:"Because i love animations!"
       }, 
       {
-      header:'Post or Edit your own blogs:',
-      description:"No word limit ! , wirte blogs without worrying about number of words, users can able to create blog and post it and can edit anytime if changes are needed."
+      header:'Difficult bit:',
+      description:"That floating springy animation thingy you seen on top in navbar was little challenging, rest is cool :)"
       }, 
     ],
     typer:[ 
       {
-        text: "A",
+        text: "Well",
       },  
       {
-        text: "place",
+        text: "this",
       }, 
       {
-        text: "where",
+        text: "is",
       }, 
       {
-        text: "users",
+        text: "portfolio",
       }, 
       {
-        text: "can",
+        text: "handcrafted",
       }, 
       {
-        text: "Read",
-        className: "text-blue-500 dark:text-blue-500",
+        text: "by",
       }, 
       {
-        text:","
-      },
-      {
-        text: "Write",
-        className: "text-purple-500 dark:text-blue-500",
+        text: "me", 
       }, 
       {
-        text: "and", 
+        text: "in", 
       }, 
       {
-        text: "Post",
-        className: "text-emerald-500 dark:text-blue-500",
+        text: "10",
+        className: "text-pink-500 ",
+      }, 
+      {
+        text: "hours",
+        className: "text-pink-500  ",
+      }, 
+      {
+        text: ";)",
+        className: " font-medium text-pink-500  ",
       },  
       {
-        text: "blogs.",
-        className: "text-white font-semibold dark:text-blue-500",
+        text: "sudheer0071",
+        className: " cursor-pointer text-purple-500 dark:text-blue-500",
       },  
     ], 
     description:"A simple portfolio made with <3 by me. ",
-    techStack:['react','typescript-icon','react','typescript-icon','react','typescript-icon'],
-    live:"medium-chindi.vercel.app/signup",
+    techStack:['nxt.png','next-js.svg','framer.svg','react.svg','tailwind.png','typescript-icon.svg', ],
+    live:"sudheer.tech",
     git:"Medium-blogs",
-    src:"medium_home", 
+    src:"portfolio_home", 
   },  
   
 ]
 
 export default function ProjectCard(){
 
-  const [about, setAbout] = useRecoilState(aboutState)
+const [about, setAbout] = useRecoilState(aboutState)
 const [skill, setSkill] = useRecoilState(skillState)
 const [project, setProject] = useRecoilState(projectState)
 
@@ -340,7 +340,7 @@ const [project, setProject] = useRecoilState(projectState)
 // },[ project])
 
   return <div className=" mb-3"> 
-      <div className=" ml-10 text-6xl items-center flex justify-center mb-10">
+      <div className=" ml-10 text-6xl items-center flex justify-center  ">
            <motion.div 
            initial = {{scale:0.8,x:-200, opacity:0}}
            whileInView={{scale:1,x:0, opacity:1}}
@@ -414,11 +414,11 @@ const [project, setProject] = useRecoilState(projectState)
     className=" "> 
       <div className="relative animate-float hover:animate-none"> 
        <CardContainer className=" inter-var">
-        <CardBody className=" bg-gray-900 relative group/card hover:shadow-2xl hover:shadow-white  border-white w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
+        <CardBody className=" bg-gray-900 relative group/card hover:shadow-2xl hover:shadow-gray-300 hover:border-none border-white w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
           <CardItem translateZ={50} className="  flex justify-center font-bold text-3xl text-neutral-300 dark:text-white">
           {project.title}
           </CardItem> 
-          <CardItem as={"p"} translateZ={60} className=" flex justify-center  max-w-sm mt-2 text-neutral-300 dark:text-white">
+          <CardItem as={"p"} translateZ={60} className=" font-mono flex justify-center  max-w-sm mt-2 text-neutral-300 dark:text-white">
           {project.description}
           </CardItem> 
           <CardItem translateZ={100} className=" w-full mt-4">  
@@ -428,23 +428,24 @@ const [project, setProject] = useRecoilState(projectState)
           {project.techStack.map((tech,idx)=>(
             <Image
             src={`/${tech}`}
-            key={idx} width={30} height={30}
+            key={idx} width={tech.includes("sciket")?70:30} height={30}
             alt={tech}
             />
             
           ))}
           </div>
-          <div className=" flex justify-between items-center mt-16">
-            <CardItem translateX={23}>
+          <div className={` flex ${project.live.includes("sudheer")?' justify-center':"justify-between"} items-center mt-16`}>
+            <CardItem translateX={ project.live.includes("sudheer") ?0:23}>
             <HoverBorderGradient>
               <a href={project.live=="ml"?'https://pypi.org/project/mlhybridx/':`https://${project.live}`} target="_blank">{project.live=='ml'?'Docs / Installation':'Live'}</a>
             </HoverBorderGradient>
             </CardItem>
-            <CardItem translateX={-23}>
+            {!project.live.includes("sudheer")?<CardItem translateX={-23}>
             <HoverBorderGradient>
               <a href={`https://github.com/sudheer0071/${project.git}`} target="_blank">Github</a> 
             </HoverBorderGradient>
-            </CardItem>
+            </CardItem> :''}
+            
           </div>
         </CardBody>
        </CardContainer> 

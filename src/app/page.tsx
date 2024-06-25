@@ -1,20 +1,32 @@
 "use client"
-import React from "react";
+import React, { useEffect } from "react";
 import { TracingBeam } from "@/components/ui/TracingScoll";
 import ProjectCard from "@/components/Project_card";
 import { HeroHighlight } from "@/components/ui/DotBeackground";
+import { aboutState, contactState, projectState, skillState } from "./recoilContextProvider";
 
 import Skills from "@/components/skills";
 import Navbar from "@/components/NavBar";
 import AboutMe from "@/components/About"; 
+import Contact from "@/components/Contact";
+import { useRecoilState } from "recoil";
 
 export default function GridBackgroundDemo() { 
-  // useEffect(()=>{
 
-  //   setAbout(true);
-  //   setSkill(false)
-  //   setproject(false)
-  // },[skill,about, project])
+  
+
+  const [about, setAbout] = useRecoilState(aboutState)
+  const [skill, setSkill] = useRecoilState(skillState)
+  const [project, setProject] = useRecoilState(projectState)
+  const [contact, setContact] = useRecoilState(contactState)
+
+  useEffect(()=>{
+
+    setAbout(true);
+    setSkill(false)
+    setProject(false)
+    setContact(false)
+  },[])
 
   return (
     <div >
@@ -37,6 +49,9 @@ export default function GridBackgroundDemo() {
             </div>
             <div id="Projects" className="  ">
               <ProjectCard />
+            </div>
+            <div id="Contact" className="  ">
+              <Contact />
             </div>
           </div>
         </TracingBeam>

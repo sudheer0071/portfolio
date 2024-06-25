@@ -11,9 +11,7 @@ import { ButtonsCard } from "@/components/SpinnerButton";
 import SparkleHeader from "@/components/SparkleHeader"; 
 import TextGenerateEffect from "@/components/ui/GenerateText"; 
 import reactElementToJSXString from "react-element-to-jsx-string";
-import { IconClipboard } from "@tabler/icons-react";
-import { useRecoilState } from "recoil";
-import { aboutState, projectState, skillState } from "@/app/recoilContextProvider";
+import { IconClipboard } from "@tabler/icons-react"; 
 
 export default function AboutMe(){ 
   // useEffect(()=>{
@@ -34,7 +32,11 @@ export default function AboutMe(){
       text: "passionate ",
     },
     {
-      text: "web",
+      text: "full",
+      className: "text-blue-500 dark:text-blue-500",
+    },
+    {
+      text: "stack",
       className: "text-blue-500 dark:text-blue-500",
     },
     {
