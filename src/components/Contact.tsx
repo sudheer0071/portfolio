@@ -25,7 +25,7 @@ export function PlaceholderVanish() {
       </div>
       </div>
       <div className="">I'll get back to you as soon as possible :{")"}</div>
-      </div>);
+      </div>)
   };
   return (
     <div className=" flex flex-col justify-center  items-center px-4">
@@ -44,7 +44,7 @@ export function PlaceholderVanish() {
  
 export default function Contact(){
   return <div className=" text-white">
-      <Toaster position="bottom-right" />
+      {/* <Toaster position="bottom-right" />
     <PlaceholderVanish />
      <div className=" font-medium text-gray-300 m-5 flex justify-center gap-10 mb-10 mt-20 ">
       <div>
@@ -75,6 +75,6 @@ export default function Contact(){
         <a href="https://github.com/sudheer0071" target="_blank" >
         <span>sudheer0071</span></a>
       </div> 
-     </div>
+     </div> */}
     </div>
 }
