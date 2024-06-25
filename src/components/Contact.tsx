@@ -9,8 +9,8 @@ export function PlaceholderVanish() {
     "How to reach you?",
     "I would like to work work with you.",
     "Can you build website like this for my project as well?",
-    "Write a Javascript method to reverse a string",
-    "why are you gay?",
+    "How long would u take develop a ecommerce web app?",
+    "why are you spying on me?",
   ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
