@@ -69,7 +69,7 @@ console.log(projectHover);
       transition={{
         type: "spring",
         stiffness: 200,
-        damping: projectHover|| contactHover ? 10 : 7,
+        damping: projectHover? 10: contactHover?12 : 7,
       }}
       className={`absolute -z-10 bottom-0 left-0 h-full ${about ? 'bg-[#93a5f3]/70' : ''} rounded-full`}
       aria-hidden="true"

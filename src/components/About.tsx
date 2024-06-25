@@ -105,17 +105,20 @@ export default function AboutMe(){
      <div className=" flex items-center my-7 gap-5"> 
       <div className="  "> 
             <HoverBorderGradient className=" ">
-              {/* <a href={` `} target="_blank">My work</a> */}
+              <a href={`https://github.com/sudheer0071`} target="_blank"> 
               <GithubIcon/>
+              </a>
             </HoverBorderGradient>  
       </div>
             <HoverBorderGradient>
-              {/* <a href={` `} target="_blank">Hire me</a>  */}
+              <a href={`mailto:sudheer1614@gmail.com`} target="_blank"> 
               <Mail/>
+                </a> 
             </HoverBorderGradient> 
             <HoverBorderGradient>
-              {/* <a href={` `} target="_blank">Hire me</a>  */}
+              <a href={`https://www.linkedin.com/in/sudheer-8075121a0/`} target="_blank"> 
               <LinkedinIcon/>
+                </a> 
             </HoverBorderGradient> 
           </div>
      </div>
