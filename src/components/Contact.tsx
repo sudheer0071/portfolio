@@ -24,7 +24,7 @@ export function PlaceholderVanish() {
       Thanks for asking!
       </div>
       </div>
-      <div className="">I'll get back to you as soon as possible :)</div>
+      <div className="">I'll get back to you as soon as possible :{")"}</div>
       </div>);
   };
   return (
