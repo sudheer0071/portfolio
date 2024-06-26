@@ -9,7 +9,7 @@ import Skills from "@/components/skills";
 import Navbar from "@/components/NavBar";
 import AboutMe from "@/components/About"; 
 import Contact from "@/components/Contact";
-import { useRecoilState, useSetRecoilState } from "recoil";
+import {  useSetRecoilState } from "recoil";
 import handleViewport from 'react-in-viewport'; 
 
 export default function GridBackgroundDemo() { 

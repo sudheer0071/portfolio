@@ -1,41 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React  from "react";
 
 import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
 import { HoverBorderGradient } from "@/components/ui/Button"; 
 import { motion } from "framer-motion";
 import SparkleHeader from "./SparkleHeader";
-import { TypewriterEffect } from "./ui/TypeWriter"; 
-import { useRecoilState } from "recoil";
-import { aboutState, projectState, skillState } from "@/app/recoilContextProvider";
+import { TypewriterEffect } from "./ui/TypeWriter";  
 import Image from "next/image";
  
-
-const words = [
-  {
-    text: "I'm",
-  },
-  {
-    text: "a",
-  },
-  {
-    text: "passionate ",
-  },
-  {
-    text: "web",
-    className: "text-blue-500 dark:text-blue-500",
-  },
-  {
-    text: "developer",
-    className: "text-blue-500 dark:text-blue-500",
-  },
-  {
-    text: "from",
-  },
-  {
-    text: "India.",
-  }, 
-];
-
+ 
 
 const projects = [
   { 
@@ -327,11 +299,7 @@ const projects = [
   
 ]
 
-export default function ProjectCard({forwardedRef}:any){
-
-const [about, setAbout] = useRecoilState(aboutState)
-const [skill, setSkill] = useRecoilState(skillState)
-const [project, setProject] = useRecoilState(projectState)
+export default function ProjectCard({forwardedRef}:any){ 
 
 // useEffect(()=>{
 //   setAbout(false)

@@ -1,11 +1,11 @@
 "use client"
 "use client";
 import Image from "next/image";
-import React, { forwardRef, useEffect, useRef, useState }  from "react";
+import React, {  useRef }  from "react";
 import { Space_Grotesk } from "next/font/google";
 import { motion } from "framer-motion";
-import { useRecoilState, useSetRecoilState } from "recoil";
-import { aboutHoverState, aboutState, contactHoverState, projectHoverState, projectState, skillHoverState, skillState } from "@/app/recoilContextProvider";
+import {   useSetRecoilState } from "recoil";
+import { aboutHoverState,   contactHoverState, projectHoverState,  skillHoverState } from "@/app/recoilContextProvider";
 import handleViewport from "react-in-viewport";
 const space = Space_Grotesk({ subsets: ["latin"], weight: "400" });
 
@@ -194,10 +194,7 @@ const ViewTool = handleViewport(Tools)
  export default function Skills ( ) {
   //  const color = inViewport ? '#217ac0' : '#ff9800';
   //  const text = inViewport ? 'In viewport' : 'Not in viewport';
-
-  const [about, setAbout] = useRecoilState(aboutState)
-const [skill, setSkill] = useRecoilState(skillState)
-const [project, setProject] = useRecoilState(projectState)
+ 
 
 
 const setAboutHover = useSetRecoilState(aboutHoverState)
