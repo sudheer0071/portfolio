@@ -51,48 +51,18 @@ const ViewportContact = handleViewport(Contact,/** options: {}, config: {} **/)
               <Navbar />
             </div>
 
-            <div id="About" className=" my-20 flex justify-center  "> 
-              {/* <ViewportAbout onEnterViewport={()=>{
-                 setContactHover(false)
-                 setProjectHover(false);
-                 setSkillHover(false);
-                 setAboutHover(true); 
-              //    setTimeout(() => {
-              //     setSkill(false)
-              //     setAbout(true)
-              //     setProject(false)
-              //     setContact(false)
-              //  }, 1000);
-                console.log("entered viewport")}
-                } onLeaveViewport={()=> {setAboutHover(false); console.log("leaving viewPort")}
-                } /> */}
+            <div id="About" className=" my-20 flex justify-center  ">  
                 <AboutMe/>
             </div>
 
             <div  id="Skills" className=" my-20 ">
               <div className="flex justify-center ">
-                <Skills />
-                {/* <ViewportSkill onEnterViewport={()=>{
-                 setContactHover(false)
-                 setProjectHover(false);
-                 setSkillHover(true);
-                 setAboutHover(false);
-                //  setTimeout(() => {
-                //     setSkill(true)
-                //     setAbout(false)
-                //     setProject(false)
-                //     setContact(false)
-                //  }, 1000);
-                console.log("entered viewport")}
-                } onLeaveViewport={()=> {
-                  setSkillHover(false);
-                   console.log("leaving viewPort")}
-                } /> */}
+                <Skills /> 
               </div>
             </div>
             <div id="Projects" className="  ">
-              {/* <ProjectCard/> */}
-            <ViewportProject onEnterViewport={()=>{
+              <ProjectCard/>
+            {/* <ViewportProject onEnterViewport={()=>{
                  setContactHover(false)
                  setProjectHover(true);
                  setSkillHover(false);
@@ -106,15 +76,11 @@ const ViewportContact = handleViewport(Contact,/** options: {}, config: {} **/)
                }, 1000);
                 console.log("entered viewport")}
                 } onLeaveViewport={()=> {
-                  setProjectHover(false);
-                  // setSkillHover(true) 
-                  // setContactHover(true)
-                  // setAboutHover(true)
+                  setProjectHover(false); 
                    console.log("leaving viewPort")}
-                } /> 
+                } />  */}
             </div>
-            <div id="Contact" className="  "> 
-              {/* <Contact/> */}
+            <div id="Contact" className="  ">  
               <ViewportContact onEnterViewport={()=>{
                  setContactHover(true)
                  setProjectHover(false);

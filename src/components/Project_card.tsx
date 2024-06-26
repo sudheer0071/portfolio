@@ -6,7 +6,10 @@ import { motion } from "framer-motion";
 import SparkleHeader from "./SparkleHeader";
 import { TypewriterEffect } from "./ui/TypeWriter";  
 import Image from "next/image";
- 
+import { aboutHoverState, aboutState, contactHoverState, contactState, projectHoverState, projectState, skillHoverState, skillState } from "../app/recoilContextProvider";
+import { useSetRecoilState } from "recoil";
+import { divMode } from "@tsparticles/engine";
+import handleViewport from "react-in-viewport";
  
 
 const projects = [
@@ -299,15 +302,36 @@ const projects = [
   
 ]
 
+const Description = ({  forwardedRef}:any)=>{
+  return <div ref={forwardedRef} className="viewport-block ">
+ { " "}
+  </div>
+}
+
+const ViewDesc = handleViewport(Description)
+
 export default function ProjectCard({forwardedRef}:any){ 
 
+
+
+  const setAbout = useSetRecoilState(aboutState)
+  const setSkill = useSetRecoilState(skillState)
+  const setProject = useSetRecoilState(projectState)
+  const setContact = useSetRecoilState(contactState)
+
+  const setAboutHover = useSetRecoilState(aboutHoverState)
+  const setSkillHover = useSetRecoilState(skillHoverState)
+  const setProjectHover = useSetRecoilState(projectHoverState)
+  const setContactHover = useSetRecoilState(contactHoverState)
+   
+  
 // useEffect(()=>{
 //   setAbout(false)
 //   setSkill(false)
 //   setProject(true)
 // },[ project])
 
-  return <div ref={forwardedRef} className=" viewport-block mb-3"> 
+  return <div  className="  mb-3"> 
       <div className=" ml-10 text-6xl items-center flex justify-center  ">
            <motion.div 
            initial = {{scale:0.8,x:-200, opacity:0}}
@@ -366,11 +390,14 @@ export default function ProjectCard({forwardedRef}:any){
    <div className=" bg-gradient-to-r from-pink-300  to-indigo-400 inline-block text-transparent bg-clip-text font-medium text-2xl mt-5">
    {detail.header} 
    </div>
-   <p className=" text-gray-200  "> 
-  {detail.description}</p>
+     
+   
+   <p className=" text-gray-200  ">  
+  {detail.description}
+  </p>
         </div>
     ))}
-    </motion.div>
+    </motion.div>  
     <motion.div
       initial = {{scale:0.8,x:200, opacity:0}}
       whileInView={{scale:1,x:0, opacity:1}}
@@ -380,6 +407,7 @@ export default function ProjectCard({forwardedRef}:any){
        damping:20,
       }}
     className=" "> 
+   
       <div className="relative animate-float hover:animate-none"> 
        <CardContainer className=" inter-var">
         <CardBody className=" bg-gray-900 relative group/card hover:shadow-2xl hover:shadow-gray-300 hover:border-none border-white w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
@@ -399,8 +427,26 @@ export default function ProjectCard({forwardedRef}:any){
             key={idx} width={tech.includes("sciket")?70:30} height={30}
             alt={tech}
             />
-            
           ))}
+            <ViewDesc 
+     onEnterViewport={()=>{
+      setContactHover(false)
+      setProjectHover(true);
+      setSkillHover(false);
+      setAboutHover(false);
+      
+      setTimeout(() => {
+       setSkill(false)
+       setAbout(false)
+       setProject(true)
+       setContact(false)
+    }, 1000);
+     console.log("entered viewport")}
+     } onLeaveViewport={()=> {
+       setProjectHover(false); 
+        console.log("leaving viewPort")}
+     }
+    ></ViewDesc>
           </div>
           <div className={` flex ${project.live.includes("sudheer")?' justify-center':"justify-between"} items-center mt-16`}>
             <CardItem translateX={ project.live.includes("sudheer") ?0:23}>
