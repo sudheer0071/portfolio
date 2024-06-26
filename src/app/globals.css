@@ -20,7 +20,7 @@
 }
 
 .scroll::-webkit-scrollbar-thumb {
-  background-color: rgba(142, 175, 238, 0.842);
+  background-color: rgba(142, 176, 238, 0.404);
   /* Color of the scrollbar thumb */
   border-radius: 4px;
   /* Rounded corners for the scrollbar thumb */
