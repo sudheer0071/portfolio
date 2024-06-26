@@ -97,12 +97,13 @@ const ViewportContact = handleViewport(Contact,/** options: {}, config: {} **/)
                  setProjectHover(true);
                  setSkillHover(false);
                  setAboutHover(false);
-              //    setTimeout(() => {
-              //     setSkill(false)
-              //     setAbout(false)
-              //     setProject(true)
-              //     setContact(false)
-              //  }, 1000);
+                 
+                 setTimeout(() => {
+                  setSkill(false)
+                  setAbout(false)
+                  setProject(true)
+                  setContact(false)
+               }, 1000);
                 console.log("entered viewport")}
                 } onLeaveViewport={()=> {
                   setProjectHover(false);
@@ -119,14 +120,23 @@ const ViewportContact = handleViewport(Contact,/** options: {}, config: {} **/)
                  setProjectHover(false);
                  setSkillHover(false);
                  setAboutHover(false);
-              //    setTimeout(() => {
-              //     setSkill(false)
-              //     setAbout(false)
-              //     setProject(false)
-              //     setContact(true)
-              //  }, 1000);
+                 setTimeout(() => {
+                  setSkill(false)
+                  setAbout(false)
+                  setProject(false)
+                  setContact(true)
+               }, 1000);
                 console.log("entered viewport")}
-                } onLeaveViewport={()=> {setContactHover(false); 
+                } onLeaveViewport={()=> {
+                  setContactHover(false) 
+                  setProjectHover(true); 
+                  setTimeout(() => {
+                    setProject(true)
+                    setAbout(false)
+                    setSkill(false)
+                    setContact(false)
+                  }, 1000);
+
                     console.log("leaving viewPort")}
                 } />
             </div>

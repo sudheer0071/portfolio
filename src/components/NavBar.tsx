@@ -132,8 +132,8 @@ setContact(false)
     <span className="font-jetbrain text-xl text-foreground">Projects</span>
     <motion.div
       animate={project?{
-        x: aboutHover ? -430 : skillHover ? -210 : contactHover? 230: -20,
-        width: aboutHover ? 100 : skillHover ? 88 :contactHover?120: 150,
+        x: aboutHover ? -430 : skillHover ? -210 : contactHover? 230: -6,
+        width: aboutHover ? 100 : skillHover ? 88 :contactHover?120: 120,
       }:""}
       className={`absolute -z-10 bottom-0 left-0 h-full ${project ? 'bg-[#93a5f3]/70' : ''} rounded-full`}
       aria-hidden="true"
@@ -164,7 +164,7 @@ setContact(false)
     <motion.div
       animate={contact?{
         x: aboutHover ? -670 : skillHover ? -450 : projectHover? -240 : -8,
-        width: aboutHover ? 100 : skillHover ? 88 : 120,
+        width: aboutHover ? 100 : skillHover ? 88 : projectHover?110: 120,
       }:""}
       transition={{
         type: "spring",

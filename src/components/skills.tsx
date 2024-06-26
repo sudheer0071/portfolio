@@ -5,7 +5,7 @@ import React, {  useRef }  from "react";
 import { Space_Grotesk } from "next/font/google";
 import { motion } from "framer-motion";
 import {   useSetRecoilState } from "recoil";
-import { aboutHoverState,   contactHoverState, projectHoverState,  skillHoverState } from "@/app/recoilContextProvider";
+import { aboutHoverState,   aboutState,   contactHoverState, contactState, projectHoverState,  projectState,  skillHoverState, skillState } from "@/app/recoilContextProvider";
 import handleViewport from "react-in-viewport";
 const space = Space_Grotesk({ subsets: ["latin"], weight: "400" });
 
@@ -202,6 +202,11 @@ const setSkillHover = useSetRecoilState(skillHoverState)
 const setProjectHover = useSetRecoilState(projectHoverState)
 const setContactHover = useSetRecoilState(contactHoverState)
 
+
+const setAbout = useSetRecoilState(aboutState)
+const setSkill = useSetRecoilState(skillState)
+const setProject = useSetRecoilState(projectState)
+const setContact = useSetRecoilState(contactState)
 
 const ref = useRef(null)
 
@@ -483,12 +488,12 @@ const ref = useRef(null)
         setProjectHover(false);
         setSkillHover(true);
         setAboutHover(false);
-       //  setTimeout(() => {
-       //     setSkill(true)
-       //     setAbout(false)
-       //     setProject(false)
-       //     setContact(false)
-       //  }, 1000);
+        setTimeout(() => {
+           setSkill(true)
+           setAbout(false)
+           setProject(false)
+           setContact(false)
+        }, 1000);
        console.log("Inside tooolls.....")}
        } onLeaveViewport={()=> {
          setSkillHover(false);
