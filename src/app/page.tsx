@@ -29,11 +29,11 @@ export default function GridBackgroundDemo() {
   },[])
 
   return (
-    <div >
-      <HeroHighlight className="flex justify-start overflow-x-hidden">
+    <div className=" ">
+      <HeroHighlight className=" flex justify-start overflow-x-hidden">
 
         <TracingBeam className="">
-          <div className="  flex-col">
+          <div className=" flex-col">
             <div id="NAVBAR" className=" mt-8 text-white flex justify-center">
               <Navbar />
             </div>

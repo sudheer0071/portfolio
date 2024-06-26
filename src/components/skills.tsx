@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React  from "react";
+import React, { useEffect, useRef, useState }  from "react";
 import { Space_Grotesk } from "next/font/google";
 import { motion } from "framer-motion";
 import { useRecoilState } from "recoil";
@@ -140,13 +140,42 @@ export default function Skills() {
 const [skill, setSkill] = useRecoilState(skillState)
 const [project, setProject] = useRecoilState(projectState)
 
-// useEffect(()=>{
-//   console.log("inside skills ");
-  
-//   setAbout(false)
-//   setProject(false)
-//   setSkill(true)
-// },[skill  ])
+
+const [aboutHover, setAboutHover] = useState(false)
+const [skillHover, setSkillHover] = useState(false)
+const [projectHover, setProjectHover] = useState(false)
+const [contactHover, setContactHover] = useState(false)
+
+
+const ref = useRef(null)
+
+useEffect(()=>{
+  console.log("inside skilll");
+  const observer = new IntersectionObserver(
+    ([entry])=>{
+      console.log("inside entry");
+      if (entry.isIntersecting) {
+        console.log("inside interaction");
+        
+        setSkillHover(true);
+      }else{
+        setSkillHover(false)
+      }
+    },
+    {threshold:0.1}
+  )
+
+  if (ref.current) {
+    observer.observe(ref.current)
+  }
+
+  return ()=> {
+    if (ref.current) {
+      observer.unobserve(ref.current)
+    }
+  }
+
+},[skillHover,skill])
 
   return (
     <div className="flex justify-center flex-col">
@@ -160,6 +189,9 @@ const [project, setProject] = useRecoilState(projectState)
             stiffness: 260,
             damping: 20,
           }}
+           
+          onLoadedData={()=>  {console.log("loaded");
+           setSkillHover(true)}}
           className=" text-3xl text-purple-500 md:text-5xl font-bold"
         >{`<`}</motion.span>
         <motion.span
