@@ -327,7 +327,7 @@ const projects = [
   
 ]
 
-export default function ProjectCard(){
+export default function ProjectCard({forwardedRef}:any){
 
 const [about, setAbout] = useRecoilState(aboutState)
 const [skill, setSkill] = useRecoilState(skillState)
@@ -339,7 +339,7 @@ const [project, setProject] = useRecoilState(projectState)
 //   setProject(true)
 // },[ project])
 
-  return <div className=" mb-3"> 
+  return <div ref={forwardedRef} className=" viewport-block mb-3"> 
       <div className=" ml-10 text-6xl items-center flex justify-center  ">
            <motion.div 
            initial = {{scale:0.8,x:-200, opacity:0}}

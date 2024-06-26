@@ -42,8 +42,8 @@ export function PlaceholderVanish() {
 }
  
  
-export default function Contact(){
-  return <div className=" text-white">
+export default function Contact({forwardedRef}:any){
+  return <div ref={forwardedRef} className=" viewport-block text-white">
       <Toaster position="bottom-right" />
     <PlaceholderVanish />
      <div className=" font-medium text-gray-300 m-5 flex justify-center gap-10 mb-10 mt-20 ">

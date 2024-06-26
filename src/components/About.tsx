@@ -6,20 +6,26 @@ import { HoverBorderGradient } from "@/components/ui/Button";
 import { TypewriterEffect } from "@/components/ui/TypeWriter";
  
 import {toast, Toaster } from "sonner";
-import { ButtonsCard } from "@/components/SpinnerButton";
- 
+import { ButtonsCard } from "@/components/SpinnerButton"; 
 import SparkleHeader from "@/components/SparkleHeader"; 
 import TextGenerateEffect from "@/components/ui/GenerateText"; 
 import reactElementToJSXString from "react-element-to-jsx-string";
 import { IconClipboard } from "@tabler/icons-react"; 
+import handleViewport from "react-in-viewport";
+import { aboutHoverState, contactHoverState, projectHoverState, skillHoverState } from "@/app/recoilContextProvider";
+import { useSetRecoilState } from "recoil";
 
-export default function AboutMe(){ 
+export default function AboutMe({forwardedRef}:any){ 
   // useEffect(()=>{
   //   setAbout(true)
   //   setSkill(false)
   //   setProject(false)
   // },[about]) 
   
+  const setAboutHover = useSetRecoilState(aboutHoverState)
+  const setSkillHover = useSetRecoilState(skillHoverState)
+  const setProjectHover = useSetRecoilState(projectHoverState)
+  const setContactHover = useSetRecoilState(contactHoverState)
 
   const words = [
     {
@@ -88,7 +94,16 @@ export default function AboutMe(){
   };
  const words2 = " Hey there! I'm Sudheer, a Developer  by profession. Currently hacking with web development more focussed towards backend, building supercool websites and integrating it with databases! "
   
-  return <div>
+const GeneratedText = ({forwardedRef}:any)=>{
+  return   <div ref={forwardedRef} className="viewport-block max-w-md  text-xl italic font-mono text-[#b2dbf2]">
+  <TextGenerateEffect className="text-[#b2dbf2]" words={words2} /> 
+ </div>
+} 
+
+const ViewText = handleViewport(GeneratedText)
+
+
+  return <div ref={forwardedRef} className=" viewport-block">
      <div className="grid md:grid-cols-2 grid-cols-1 gap-10 md:gap-20 place-items-center">
     <div>
       <div className=" bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text  ">
@@ -122,8 +137,23 @@ export default function AboutMe(){
             </HoverBorderGradient> 
           </div>
      </div>
-     <div className=" max-w-md  text-xl italic font-mono text-[#b2dbf2]">
-      <TextGenerateEffect className="text-[#b2dbf2]" words={words2} /> 
+     <div> 
+          <ViewText 
+          onEnterViewport={()=>{
+            setContactHover(false)
+            setProjectHover(false);
+            setSkillHover(false);
+            setAboutHover(true); 
+         //    setTimeout(() => {
+         //     setSkill(false)
+         //     setAbout(true)
+         //     setProject(false)
+         //     setContact(false)
+         //  }, 1000);
+           console.log("entered viewport")}
+           } onLeaveViewport={()=> {setAboutHover(false); console.log("leaving viewPort")}
+           }
+          />
      </div>
      <div>
      <div className=" my-14 w-full">

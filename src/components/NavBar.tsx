@@ -1,7 +1,7 @@
  "use client"
 import React, { useState } from "react"; 
 import { MotionConfig, motion } from "framer-motion"; 
-import { aboutState, contactState, projectState, skillState } from "@/app/recoilContextProvider";
+import { aboutHoverState, aboutState, contactHoverState, contactState, projectHoverState, projectState, skillHoverState, skillState } from "@/app/recoilContextProvider";
 import { useRecoilState } from "recoil"; 
 export default function Navbar() { 
 
@@ -10,10 +10,10 @@ export default function Navbar() {
   const [project, setProject] = useRecoilState(projectState)
   const [contact, setContact] = useRecoilState(contactState)
 
-  const [aboutHover, setAboutHover] = useState(false)
-  const [skillHover, setSkillHover] = useState(false)
-  const [projectHover, setProjectHover] = useState(false)
-  const [contactHover, setContactHover] = useState(false)
+  const [aboutHover, setAboutHover] = useRecoilState(aboutHoverState)
+  const [skillHover, setSkillHover] = useRecoilState(skillHoverState)
+  const [projectHover, setProjectHover] = useRecoilState(projectHoverState)
+  const [contactHover, setContactHover] = useRecoilState(contactHoverState)
   
 console.log(about);
 console.log(skill);
@@ -68,7 +68,7 @@ console.log(projectHover);
        
       transition={{
         type: "spring",
-        stiffness: 200,
+        stiffness:projectHover? 150: contactHover?150 : 200,
         damping: projectHover? 10: contactHover?12 : 7,
       }}
       className={`absolute -z-10 bottom-0 left-0 h-full ${about ? 'bg-[#93a5f3]/70' : ''} rounded-full`}
@@ -168,8 +168,8 @@ setContact(false)
       }:""}
       transition={{
         type: "spring",
-        stiffness: 200,
-        damping: aboutHover|| skillHover ? 10 : 7,
+        stiffness:  aboutHover|| skillHover ? 170 : 200,
+        damping: aboutHover|| skillHover ? 12 : 7,
       }}
       className={`absolute -z-10 bottom-0 left-0 h-full ${contact ? 'bg-[#93a5f3]/70' : ''} rounded-full`}
       aria-hidden="true"

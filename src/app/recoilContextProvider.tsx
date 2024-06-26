@@ -21,6 +21,26 @@ export const contactState = atom({
   default:false
 }) 
 
+export const  aboutHoverState = atom({
+  key:"aboutHover",
+  default:false
+})
+
+export const  skillHoverState = atom({
+  key:"skillHover",
+  default:false
+})
+
+export const  projectHoverState = atom({
+  key:"projectHover",
+  default:false
+})
+
+export const  contactHoverState = atom({
+  key:"contactHover",
+  default:false
+})
+
 export default function RecoilContextProvider({ children }:any){
   return <RecoilRoot>{children}</RecoilRoot>
 }
