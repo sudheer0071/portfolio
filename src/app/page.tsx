@@ -61,24 +61,7 @@ const ViewportContact = handleViewport(Contact,/** options: {}, config: {} **/)
               </div>
             </div>
             <div id="Projects" className="  ">
-              <ProjectCard/>
-            {/* <ViewportProject onEnterViewport={()=>{
-                 setContactHover(false)
-                 setProjectHover(true);
-                 setSkillHover(false);
-                 setAboutHover(false);
-                 
-                 setTimeout(() => {
-                  setSkill(false)
-                  setAbout(false)
-                  setProject(true)
-                  setContact(false)
-               }, 1000);
-                console.log("entered viewport")}
-                } onLeaveViewport={()=> {
-                  setProjectHover(false); 
-                   console.log("leaving viewPort")}
-                } />  */}
+              <ProjectCard/> 
             </div>
             <div id="Contact" className="  ">  
               <ViewportContact onEnterViewport={()=>{

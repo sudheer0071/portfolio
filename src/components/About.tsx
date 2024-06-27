@@ -12,8 +12,8 @@ import TextGenerateEffect from "@/components/ui/GenerateText";
 import reactElementToJSXString from "react-element-to-jsx-string";
 import { IconClipboard } from "@tabler/icons-react"; 
 import handleViewport from "react-in-viewport";
-import { aboutHoverState, contactHoverState, projectHoverState, skillHoverState } from "@/app/recoilContextProvider";
-import { useSetRecoilState } from "recoil";
+import { aboutHoverState, aboutState, contactHoverState, contactState, projectHoverState, projectState, skillHoverState, skillState } from "@/app/recoilContextProvider";
+import { useRecoilState, useSetRecoilState } from "recoil";
 
 export default function AboutMe({forwardedRef}:any){ 
   // useEffect(()=>{
@@ -22,6 +22,11 @@ export default function AboutMe({forwardedRef}:any){
   //   setProject(false)
   // },[about]) 
   
+  const [about, setAbout] = useRecoilState(aboutState)
+  const [skill, setSkill] = useRecoilState(skillState)
+  const [project, setProject] = useRecoilState(projectState)
+  const [contact, setContact] = useRecoilState(contactState)
+
   const setAboutHover = useSetRecoilState(aboutHoverState)
   const setSkillHover = useSetRecoilState(skillHoverState)
   const setProjectHover = useSetRecoilState(projectHoverState)
@@ -144,12 +149,12 @@ const ViewText = handleViewport(GeneratedText)
             setProjectHover(false);
             setSkillHover(false);
             setAboutHover(true); 
-         //    setTimeout(() => {
-         //     setSkill(false)
-         //     setAbout(true)
-         //     setProject(false)
-         //     setContact(false)
-         //  }, 1000);
+            setTimeout(() => {
+             setSkill(false)
+             setAbout(true)
+             setProject(false)
+             setContact(false)
+          }, 1000);
            console.log("entered viewport")}
            } onLeaveViewport={()=> {setAboutHover(false); console.log("leaving viewPort")}
            }

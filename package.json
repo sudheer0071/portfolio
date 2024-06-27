@@ -20,6 +20,7 @@
     "mini-svg-data-uri": "^1.4.4",
     "next": "14.2.4",
     "react": "^18",
+    "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^18",
     "react-element-to-jsx-string": "^15.0.0",
     "react-in-viewport": "^1.0.0-beta.2",
@@ -31,6 +32,7 @@
   "devDependencies": {
     "@types/node": "^20",
     "@types/react": "^18",
+    "@types/react-anchor-link-smooth-scroll": "^1.0.5",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.4",
