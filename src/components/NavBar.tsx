@@ -1,10 +1,8 @@
- "use client"
+"use client"
 import React, { useState } from "react"; 
 import { MotionConfig, motion } from "framer-motion"; 
 import { aboutHoverState, aboutState, contactHoverState, contactState, projectHoverState, projectState, skillHoverState, skillState } from "@/app/recoilContextProvider";
 import { useRecoilState } from "recoil"; 
-import  AnchorLink  from 'react-anchor-link-smooth-scroll'
-
 export default function Navbar() { 
 
   const [about, setAbout] = useRecoilState(aboutState)
@@ -29,8 +27,6 @@ console.log(projectHover);
 
 
 
-
-
   return (
     <div className=" flex justify-center">                        
    
@@ -43,8 +39,7 @@ console.log(projectHover);
           damping: 7,
         }}
       >
-  <AnchorLink className="p-4 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in bg-transparent text-zinc-100"
-    href="#About">
+  
   <motion.a
     onHoverStart={() => {
 
@@ -63,12 +58,13 @@ console.log(projectHover);
       setProject(false);
       setAbout(true);
       setContact(false)
-    }} 
-   className=" p-4 "
+    }}
+    className="p-4 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in bg-transparent text-zinc-100"
+    href="/#About"
   >
     <span className="font-jetbrain text-xl text-foreground">About</span>
     <motion.div
-      animate={about?{  x: contactHover?770 : projectHover ? 497 : skillHover ? 260 : 15, width: projectHover ? 130:contactHover?120 : 95 }:''} 
+      animate={about?{  x: contactHover?670 : projectHover ? 417 : skillHover ? 210 : 0, width: projectHover ? 130 : 100 }:''} 
        
       transition={{
         type: "spring",
@@ -80,8 +76,7 @@ console.log(projectHover);
       style={{ width: "100%", opacity: 1 }}
     />
   </motion.a>
-  </AnchorLink>
- <AnchorLink href="#Skills" className="p-4 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in bg-transparent text-zinc-100">
+
   <motion.a
     onHoverStart={() => {
       setContactHover(false)
@@ -98,29 +93,22 @@ setContact(false)
       setAbout(false);
       setProject(false);
       setSkill(true);
-    }} 
-    className=" p-4"
+    }}
+    className="p-4 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in bg-transparent text-zinc-100"
+    href="/#Skills"
   >
     <span className="font-jetbrain text-xl text-foreground">Skills</span>
     <motion.div
       animate={skill?{
-        x: aboutHover ? -240 : projectHover ? 250 : contactHover? 520 : 12,
-        width: aboutHover ? 98 : projectHover ? 130 :contactHover?125: 90,
+        x: aboutHover ? -220 : projectHover ? 200 : contactHover? 440 : 0,
+        width: aboutHover ? 98 : projectHover ? 130 :contactHover?125: 80,
       }:''} 
-      
-      transition={{
-        type: "spring",
-        stiffness:  contactHover?150 : 200,
-        damping: projectHover? 10: contactHover?12 : 7,
-      }}
-
       className={` -z-10 absolute bottom-0 left-0 h-full ${skill ? 'bg-[#93a5f3]/70' : ''} rounded-full`}
       aria-hidden="true"
-      style={{ width: "100%", opacity: 1 }} 
+      style={{ width: "100%", opacity: 1 }}
     />
   </motion.a>
- </AnchorLink>
-<AnchorLink href="#Projects"  className=" p-4 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in bg-transparent text-zinc-100" >
+
   <motion.a
     onHoverStart={() => {
       setContactHover(false)
@@ -137,13 +125,14 @@ setContact(false)
       setAbout(false);
       setSkill(false);
       setProject(true);
-    }} 
-    className=" p-4 "
+    }}
+    className="p-4 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in bg-transparent text-zinc-100"
+    href="/#Projects"
   >
     <span className="font-jetbrain text-xl text-foreground">Projects</span>
     <motion.div
       animate={project?{
-        x: aboutHover ? -480 : skillHover ? -228 : contactHover? 280: 12,
+        x: aboutHover ? -430 : skillHover ? -210 : contactHover? 230: -6,
         width: aboutHover ? 100 : skillHover ? 88 :contactHover?120: 120,
       }:""}
       className={`absolute -z-10 bottom-0 left-0 h-full ${project ? 'bg-[#93a5f3]/70' : ''} rounded-full`}
@@ -151,9 +140,6 @@ setContact(false)
       style={{ width: "100%", opacity: 1 }}
     />
   </motion.a> 
-</AnchorLink>
-  
-  <AnchorLink href="#Contact"  className="p-4   rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in bg-transparent text-zinc-100">
   <motion.a
     onHoverStart={() => {
       setContactHover(true)
@@ -171,13 +157,14 @@ setContact(false)
       setSkill(false);
       setProject(false);
     }}
-     className=" p-4"
+    className="p-4 rounded-md text-sm lg:text-base relative no-underline duration-300 ease-in bg-transparent text-zinc-100"
+    href="/#Contact"
   >
     <span className="font-jetbrain text-xl text-foreground">Contact</span>
     <motion.div
       animate={contact?{
-        x: aboutHover ? -750 : skillHover ? -500 : projectHover? -265 : 10,
-        width: aboutHover ? 100 : skillHover ? 88 : projectHover?130: 120,
+        x: aboutHover ? -670 : skillHover ? -450 : projectHover? -240 : -8,
+        width: aboutHover ? 100 : skillHover ? 88 : projectHover?110: 120,
       }:""}
       transition={{
         type: "spring",
@@ -189,7 +176,6 @@ setContact(false)
       style={{ width: "100%", opacity: 1 }}
     />
   </motion.a> 
-</AnchorLink>
       </MotionConfig>
     </div> 
        
@@ -197,4 +183,3 @@ setContact(false)
     </div>               
   );
 }
- 
