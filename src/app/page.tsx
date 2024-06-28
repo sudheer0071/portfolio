@@ -73,6 +73,7 @@ const ViewportContact = handleViewport(Contact,/** options: {}, config: {} **/)
                  setProjectHover(false);
                  setSkillHover(false);
                  setAboutHover(false);
+                 setProject(false)
                  setTimeout(() => {
                   setSkill(false)
                   setAbout(false)
