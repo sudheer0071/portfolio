@@ -4,8 +4,8 @@ import Image from "next/image";
 import React, {  useRef }  from "react";
 import { Space_Grotesk } from "next/font/google";
 import { motion } from "framer-motion";
-import {   useSetRecoilState } from "recoil";
-import { aboutHoverState,   aboutState,   contactHoverState, contactState, projectHoverState,  projectState,  skillHoverState, skillState } from "@/app/recoilContextProvider";
+import {   useRecoilState, useSetRecoilState } from "recoil";
+import { aboutHoverState,   aboutState,   contactHoverState, contactState, projectHoverState,  projectState,  scrollState,  skillHoverState, skillState } from "@/app/recoilContextProvider";
 import handleViewport from "react-in-viewport";
 const space = Space_Grotesk({ subsets: ["latin"], weight: "400" });
 
@@ -137,55 +137,8 @@ const tools_3 = [
 ]; 
 
 const Tools = (({forwardedRef}:any)=>{
-   return   <div ref={forwardedRef} className="viewport-block flex justify-center gap-10 mt-10 flex-wrap">
-   {tools_2.map((skill) => (
-     <motion.div
-     key={skill.id}
-     initial={{ scale: 0.3, opacity: 0 }}
-     whileInView={{ scale: 1, opacity: 1 }}
-     whileHover={{
-       scale: 1.1,
-       transition: {
-         duration: 0.2,
-         type: "spring",
-         stiffness: 260,
-         damping: 20,
-       },
-     }}
-     transition={{
-       duration: 1,
-       type: "spring",
-       stiffness: 260,
-       damping: 20,
-       delay: 0.2,
-     }}
-     whileTap={{
-       scale: 0.9,
-       transition: {
-         duration: 0.2,
-         type: "spring",
-         stiffness: 260,
-         damping: 20,
-       },
-     }}
-       className="flex flex-wrap justify-center gap-6 cursor-pointer"
-     >
-       <div className="relative ">
-         <span className="absolute top-0 left-0 mt-[5px] ml-[5px] h-full  rounded  bg-[#34c07c] w-[150px]"></span>
-         <span
-           className={` ${space.className} relative h-full rounded border-t-[1px] border-l-[1px] border-[#374151] bg-[#1e1e2e] px-4 py-3 text-md text-white  transition duration-100 flex items-center gap-2 justify-center w-[150px]`}
-         >
-           <Image
-             src={skill.icon}
-             width={25}
-             height={25}
-             alt={skill.name}
-           />
-           {skill.name}
-         </span>
-       </div>
-     </motion.div>
-   ))}
+   return   <div ref={forwardedRef} className="viewport-block ">
+     
  </div>
 })
 
@@ -208,36 +161,11 @@ const setSkill = useSetRecoilState(skillState)
 const setProject = useSetRecoilState(projectState)
 const setContact = useSetRecoilState(contactState)
 
+const [scrolling] = useRecoilState(scrollState)
+
+
 const ref = useRef(null)
-
-// useEffect(()=>{
-//   console.log("inside skilll");
-//   const observer = new IntersectionObserver(
-//     ([entry])=>{
-//       console.log("inside entry");
-//       if (entry.isIntersecting) {
-//         console.log("inside interaction");
-        
-//         setSkillHover(true);
-//       }else{
-//         setSkillHover(false)
-//       }
-//     },
-//     {threshold:0.1}
-//   )
-
-//   if (ref.current) {
-//     observer.observe(ref.current)
-//   }
-
-//   return ()=> {
-//     if (ref.current) {
-//       observer.unobserve(ref.current)
-//     }
-//   }
-
-// },[skill])
-
+ 
    return (
      <div >
         <div className="flex justify-center flex-col viewport-block">
@@ -481,8 +409,58 @@ const ref = useRef(null)
           </motion.div>
         ))}
       </div>
+      <div className="flex justify-center gap-10 mt-10 flex-wrap">
+      {tools_2.map((skill) => (
+     <motion.div
+     key={skill.id}
+     initial={{ scale: 0.3, opacity: 0 }}
+     whileInView={{ scale: 1, opacity: 1 }}
+     whileHover={{
+       scale: 1.1,
+       transition: {
+         duration: 0.2,
+         type: "spring",
+         stiffness: 260,
+         damping: 20,
+       },
+     }}
+     transition={{
+       duration: 1,
+       type: "spring",
+       stiffness: 260,
+       damping: 20,
+       delay: 0.2,
+     }}
+     whileTap={{
+       scale: 0.9,
+       transition: {
+         duration: 0.2,
+         type: "spring",
+         stiffness: 260,
+         damping: 20,
+       },
+     }}
+       className="flex flex-wrap justify-center gap-6 cursor-pointer"
+     >
+       <div className="relative ">
+         <span className="absolute top-0 left-0 mt-[5px] ml-[5px] h-full  rounded  bg-[#34c07c] w-[150px]"></span>
+         <span
+           className={` ${space.className} relative h-full rounded border-t-[1px] border-l-[1px] border-[#374151] bg-[#1e1e2e] px-4 py-3 text-md text-white  transition duration-100 flex items-center gap-2 justify-center w-[150px]`}
+         >
+           <Image
+             src={skill.icon}
+             width={25}
+             height={25}
+             alt={skill.name}
+           />
+           {skill.name}
+         </span>
+       </div>
+     </motion.div>
+   ))}
+      </div>
       <div className=" ">
-       <ViewTool 
+        {scrolling? <ViewTool 
        onEnterViewport={()=>{
         setContactHover(false)
         setProjectHover(false);
@@ -499,7 +477,8 @@ const ref = useRef(null)
          setSkillHover(false);
           console.log("leaving viewPort")}
        }
-       />
+       />:''}
+      
       </div>
       <div className="flex justify-center gap-10 mt-10">
         {tools_3.map((skill) => (

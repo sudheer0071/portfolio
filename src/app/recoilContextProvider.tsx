@@ -41,6 +41,16 @@ export const  contactHoverState = atom({
   default:false
 })
 
+export const scrollState = atom({
+  key:"scrolling",
+  default:true
+})
+
+export const onPageState = atom({
+  key:"onPage",
+  default:true
+})
+
 export default function RecoilContextProvider({ children }:any){
   return <RecoilRoot>{children}</RecoilRoot>
 }

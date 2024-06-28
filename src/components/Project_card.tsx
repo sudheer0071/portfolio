@@ -6,8 +6,8 @@ import { motion } from "framer-motion";
 import SparkleHeader from "./SparkleHeader";
 import { TypewriterEffect } from "./ui/TypeWriter";  
 import Image from "next/image";
-import { aboutHoverState, aboutState, contactHoverState, contactState, projectHoverState, projectState, skillHoverState, skillState } from "../app/recoilContextProvider";
-import { useSetRecoilState } from "recoil";
+import { aboutHoverState, aboutState, contactHoverState, contactState, projectHoverState, projectState, scrollState, skillHoverState, skillState } from "../app/recoilContextProvider";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { divMode } from "@tsparticles/engine";
 import handleViewport from "react-in-viewport";
  
@@ -311,8 +311,7 @@ const Description = ({  forwardedRef}:any)=>{
 const ViewDesc = handleViewport(Description)
 
 export default function ProjectCard({forwardedRef}:any){ 
-
-
+ 
 
   const setAbout = useSetRecoilState(aboutState)
   const setSkill = useSetRecoilState(skillState)
@@ -323,7 +322,9 @@ export default function ProjectCard({forwardedRef}:any){
   const setSkillHover = useSetRecoilState(skillHoverState)
   const setProjectHover = useSetRecoilState(projectHoverState)
   const setContactHover = useSetRecoilState(contactHoverState)
-   
+  
+  const [scrolling] = useRecoilState(scrollState)
+  
   
 // useEffect(()=>{
 //   setAbout(false)
@@ -428,7 +429,7 @@ export default function ProjectCard({forwardedRef}:any){
             alt={tech}
             />
           ))}
-            <ViewDesc 
+          {scrolling? <ViewDesc 
      onEnterViewport={()=>{
       setContactHover(false)
       setProjectHover(true);
@@ -441,12 +442,14 @@ export default function ProjectCard({forwardedRef}:any){
        setProject(true)
        setContact(false)
     }, 1000);
+    
      console.log("entered viewport")}
      } onLeaveViewport={()=> {
        setProjectHover(false); 
         console.log("leaving viewPort")}
      }
-    ></ViewDesc>
+    ></ViewDesc>:''}
+           
           </div>
           <div className={` flex ${project.live.includes("sudheer")?' justify-center':"justify-between"} items-center mt-16`}>
             <CardItem translateX={ project.live.includes("sudheer") ?0:23}>

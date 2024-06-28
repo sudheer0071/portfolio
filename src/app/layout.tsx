@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en"> 
-      <body className={`${inter.className} scroll scroll-smooth`}> 
+      <body className={`${inter.className} scroll`}> 
 <RecoilContextProvider>{children}</RecoilContextProvider> 
         </body>
     </html>
