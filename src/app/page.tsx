@@ -64,16 +64,16 @@ const ViewportContact = handleViewport(Contact,/** options: {}, config: {} **/)
                 <Skills /> 
               </div>
             </div>
-            <div id="Projects" className="  ">
+            <div id="Projects" className=" ">
               <ProjectCard/> 
             </div>
-            <div id="Contact" className="  ">  
+            <div id="Contact" className=" mt-40">  
               {scrolling? <ViewportContact onEnterViewport={()=>{
                  setContactHover(true)
                  setProjectHover(false);
                  setSkillHover(false);
                  setAboutHover(false);
-                 setProject(false)
+                //  setProject(false)
                  setTimeout(() => {
                   setSkill(false)
                   setAbout(false)
@@ -85,7 +85,7 @@ const ViewportContact = handleViewport(Contact,/** options: {}, config: {} **/)
                   setContactHover(false) 
                   setProjectHover(true); 
                   setTimeout(() => {
-                    // setProject(true)
+                    setProject(true)
                     setAbout(false)
                     setSkill(false)
                     setContact(false)
