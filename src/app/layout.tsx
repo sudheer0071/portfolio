@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NavBar from "@/components/NavBar";
 import RecoilContextProvider from "./recoilContextProvider";
+import SmoothScrolling from "@/components/SmoothScroll";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,8 +19,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en"> 
-      <body className={`${inter.className} scroll`}> 
-<RecoilContextProvider>{children}</RecoilContextProvider> 
+      <body className={`${inter.className} scroll`}>  
+<RecoilContextProvider> 
+  {children} 
+  </RecoilContextProvider>  
         </body>
     </html>
   );

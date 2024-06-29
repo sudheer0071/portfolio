@@ -11,8 +11,10 @@ import AboutMe from "@/components/About";
 import Contact from "@/components/Contact";
 import {  useRecoilState, useSetRecoilState } from "recoil";
 import handleViewport from 'react-in-viewport'; 
-import { motion } from "framer-motion";
-
+import { motion } from "framer-motion"; 
+import { ReactLenis } from "@studio-freight/react-lenis";
+import SmoothScrolling from "@/components/SmoothScroll";
+ 
 export default function GridBackgroundDemo() { 
 
  
@@ -44,9 +46,10 @@ export default function GridBackgroundDemo() {
  
 const ViewportContact = handleViewport(Contact,/** options: {}, config: {} **/) 
  
-  return (
+  return ( 
     < div  
-    className=" scroll scroll-smooth h-screen"> 
+    className=" scroll-smooth h-screen ">  
+    <SmoothScrolling>
       <HeroHighlight className=" flex justify-start overflow-x-hidden">
 
         <TracingBeam className="">
@@ -96,8 +99,11 @@ const ViewportContact = handleViewport(Contact,/** options: {}, config: {} **/)
             </div>
           </motion.div>
         </TracingBeam>
-      </HeroHighlight>
-    </ div>
+      </HeroHighlight> 
+    </SmoothScrolling>
+
+   
+    </ div> 
   );
 }
   
