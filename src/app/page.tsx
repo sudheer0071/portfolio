@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { TracingBeam } from "@/components/ui/TracingScoll";
 import ProjectCard from "@/components/Project_card";
 import { HeroHighlight } from "@/components/ui/DotBeackground";
-import { aboutHoverState, aboutState, contactHoverState, contactState, onPageState, projectHoverState, projectState, scrollState, skillHoverState, skillState } from "./recoilContextProvider";
+import { aboutHoverState, aboutState, contactHoverState, contactState, onPageState, projectHoverState, projectState, scrollState, skillHoverState, skillState, smallState } from "./recoilContextProvider";
 
 import Skills from "@/components/skills";
 import Navbar from "@/components/NavBar";
@@ -28,6 +28,7 @@ export default function GridBackgroundDemo() {
   const setSkillHover = useSetRecoilState(skillHoverState)
   const setProjectHover = useSetRecoilState(projectHoverState)
   const setContactHover = useSetRecoilState(contactHoverState)
+  const setSmall = useSetRecoilState(smallState)
   
   const setScrollState = useSetRecoilState(scrollState) 
   const [scrolling] = useRecoilState(scrollState)
@@ -41,8 +42,38 @@ export default function GridBackgroundDemo() {
     setSkill(false)
     setProject(false)
     setContact(false)
+
+    const handleResize = ()=>{
+      if (window.innerWidth<640) {
+        console.log("inside smalllllllllllllllllll");
+        
+        setSmall(true);
+      }
+    }
+    const mediaQuery = window.matchMedia('(max-width: 640px)');
+    const handleMediaQueryChange = (e:any) => {
+      if (e.matches) {
+        setSmall(true);
+      }
+    };
+
+    // Initial check
+    if (mediaQuery.matches) {
+      setSmall(true);
+    }
+
+    // Add event listeners
+    mediaQuery.addEventListener('change', handleMediaQueryChange);
+    window.addEventListener('resize', handleResize);
+
+    // Clean up event listeners on component unmount
+    return () => {
+      mediaQuery.removeEventListener('change', handleMediaQueryChange);
+      window.removeEventListener('resize', handleResize);
+    };
   },[])
  
+
  
 const ViewportContact = handleViewport(Contact,/** options: {}, config: {} **/) 
  
@@ -54,12 +85,12 @@ const ViewportContact = handleViewport(Contact,/** options: {}, config: {} **/)
 
         <TracingBeam className="">
           <motion.div 
-          className=" flex-col">
-            <div id="NAVBAR" className=" mt-8 text-white flex justify-center">
+          className=" lg:ml-0 flex-col">
+            <div id="NAVBAR" className="mt-8 text-white hidden md:flex lg:flex justify-center">
               <Navbar />
             </div>
 
-            <div id="About" className=" my-20 flex justify-center  ">  
+            <div id="About" className=" md:ml-10 lg:ml-5 my-20 flex justify-center  ">  
               <AboutMe/>
             </div> 
             <div  id="Skills" className=" my-20 ">
@@ -67,7 +98,7 @@ const ViewportContact = handleViewport(Contact,/** options: {}, config: {} **/)
                 <Skills /> 
               </div>
             </div>
-            <div id="Projects" className=" ">
+            <div id="Projects" className=" px-10 md:px-0 lg:px-0">
               <ProjectCard/> 
             </div>
             <div id="Contact" className=" mt-40">  

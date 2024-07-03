@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import SparkleHeader from "./SparkleHeader";
 import { TypewriterEffect } from "./ui/TypeWriter";  
 import Image from "next/image";
-import { aboutHoverState, aboutState, contactHoverState, contactState, projectHoverState, projectState, scrollState, skillHoverState, skillState } from "../app/recoilContextProvider";
+import { aboutHoverState, aboutState, contactHoverState, contactState, projectHoverState, projectState, scrollState, skillHoverState, skillState, smallState } from "../app/recoilContextProvider";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { divMode } from "@tsparticles/engine";
 import handleViewport from "react-in-viewport";
@@ -324,6 +324,7 @@ export default function ProjectCard({forwardedRef}:any){
   const setContactHover = useSetRecoilState(contactHoverState)
   
   const [scrolling] = useRecoilState(scrollState)
+  const [small] = useRecoilState(smallState)
   
   
 // useEffect(()=>{
@@ -334,40 +335,46 @@ export default function ProjectCard({forwardedRef}:any){
 
   return <div  className="  mb-3"> 
       <div className=" ml-10 text-6xl items-center flex justify-center  ">
-           <motion.div 
-           initial = {{scale:0.8,x:-200, opacity:0}}
-           whileInView={{scale:1,x:0, opacity:1}}
-           transition={{ 
-            type:"spring",
-            stiffness:260,
-            damping:20,
-           }}
-           className=" text-purple-500 font-bold" 
-           >
-            {'<'}
-           </motion.div>
-           <motion.div
-            initial = {{scale:0.3,  opacity:0}}
-            whileInView={{scale:1,  opacity:1}}
-            transition={{  
-              type:"spring",
-              stiffness:260,
-              damping:20,
-            }}
-           className="text-6xl font-mono text-[#67e8f9] font-semibold">
-            Projects
-           </motion.div>
-           <motion.div
-            initial = {{scale:0.8,x:200, opacity:0}}
-            whileInView={{scale:1,x:0, opacity:1}}
-            transition={{  
-              type:"spring",
-              stiffness:260,
-              damping:20,
-            }}
-           className=" font-bold text-purple-500">
-            {'/>'}
-           </motion.div>
+      <div className="flex items-center justify-center">
+        <motion.span
+          initial={{ scale: 0.8, x: small?-80:-200, opacity: 0 }}
+          whileInView={{ scale: 1, x: 0, opacity: 1 }}
+          transition={{
+            duration: 1,
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+          }}
+           
+          onLoadedData={()=>  {console.log("loaded");
+           setSkillHover(true)}}
+          className=" text-5xl text-purple-500 md:text-5xl font-bold"
+        >{`<`}</motion.span>
+        <motion.span
+          initial={{ scale: 0.2, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          transition={{
+            duration: 1,
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+          }}
+          className="text-6xl font-mono text-[#67e8f9] font-semibold"
+        >
+          Projects
+        </motion.span>
+        <motion.span
+          initial={{ scale: 0.8, x: small?80:200, opacity: 0 }}
+          whileInView={{ scale: 1, x: 0, opacity: 1 }}
+          transition={{
+            duration: 1,
+            type: "spring",
+            stiffness: 260,
+            damping: 20,
+          }}
+          className=" text-5xl text-purple-500 md:text-5xl font-bold"
+        >{`/>`}</motion.span>
+      </div>
       </div>
       {projects.map((project,idx)=>(
       <div key={idx} className="grid md:grid-cols-2 grid-cols-1 gap-10 md:gap-20 place-items-center"> 
@@ -379,6 +386,7 @@ export default function ProjectCard({forwardedRef}:any){
        stiffness:260,
        damping:20,
       }}
+      className=" mt-10 md:mt-0 lg:mt-0"
     >
     <div className={`  ${project.title.includes('Module')?' ':'w-80'} text-white`}> 
       <SparkleHeader project={true} text={project.title}/>

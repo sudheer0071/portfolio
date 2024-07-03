@@ -6,7 +6,7 @@ export default function SparkleHeader({text, project }:{text:string, project?:bo
   const classname = "bg-gradient-to-r from-blue-600 via-white to-indigo-400 inline-block text-transparent bg-clip-text";
   return (
     <div className=" w-full justify-center overflow-hidden rounded-md">
-      <h1 className={`md:text-7xl text-3xl font-sans lg:text-6xl font-bold text-left   relative z-20  ${project?'text-white':classname}`}>
+      <h1 className={`md:text-6xl ${project?' text-4xl':' text-5xl '} font-sans lg:text-6xl font-bold text-left relative z-20  ${project?'text-white':classname}`}>
         {text}
       </h1>
       <div className={` flex  ${project?' -ml-20 mt-2':''} justify-center bg-transparent h-10 relative`}>

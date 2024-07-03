@@ -51,6 +51,11 @@ export const onPageState = atom({
   default:true
 })
 
+export const smallState = atom({
+  key:"small",
+  default:false  
+})
+
 export default function RecoilContextProvider({ children }:any){
   return <RecoilRoot>{children}</RecoilRoot>
 }

@@ -112,8 +112,8 @@ export default function AboutMe({ forwardedRef }: any) {
 
   return <div ref={forwardedRef} className=" viewport-block">
     <div className="grid md:grid-cols-2 grid-cols-1 gap-10 md:gap-20 place-items-center">
-      <div>
-        <div className=" bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text  "> 
+      <div className="ml-10 md:ml-0 lg:ml-0 max-w-3xl">
+        <div className=" bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text"> 
           <SparkleHeader text="Sudheer Chaurasia" />
         </div>
         <div className=" w-full">
@@ -142,7 +142,7 @@ export default function AboutMe({ forwardedRef }: any) {
           </div>
         </div>
         <div>
-        <div className=" max-w-md  text-xl italic font-mono text-[#b2dbf2]">
+        <div className=" max-w-md italic font-mono text-[#b2dbf2]">
       <TextGenerateEffect className="text-[#b2dbf2]" words={words2} />
     </div>
           {scrolling? <ViewText
@@ -165,10 +165,10 @@ export default function AboutMe({ forwardedRef }: any) {
         
         </div>
         <div>
-          <div className=" my-14 w-full">
+          <div className=" -ml-7 md:ml-0 lg:ml-0 my-10 md:my-12 lg:my-14 w-full">
             <Toaster position="bottom-right" />
             <div className=" mt-7">
-              <ButtonsCard className="" onClick={() => copy(buttons)}>
+              <ButtonsCard className=" scale-90 md:scale-95 lg:scale-100" onClick={() => copy(buttons)}>
                 {buttons.component}
               </ButtonsCard>
             </div>

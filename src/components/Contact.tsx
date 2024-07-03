@@ -28,15 +28,15 @@ export function PlaceholderVanish() {
       </div>)
   };
   return (
-    <div className=" flex flex-col justify-center  items-center px-4">
-      <h2 className="sm:mb-20 text-xl text-center sm:text-5xl bg-gradient-to-r from-slate-300  to-indigo-400 inline-block text-transparent bg-clip-text font-medium">
+    <div className=" flex flex-col items-center px-4">
+      <h2 className="sm:mb-20 text-4xl text-center sm:text-5xl bg-gradient-to-r from-slate-300  to-indigo-400 inline-block text-transparent bg-clip-text font-medium mb-20">
         Ask me anything! 
       </h2>
       <PlaceholdersAndVanishInput 
         placeholders={placeholders}
         onChange={handleChange}
         onSubmit={onSubmit}
-      />
+      /> 
     </div>
   );
 }
@@ -46,7 +46,7 @@ export default function Contact({forwardedRef}:any){
   return <div ref={forwardedRef} className=" viewport-block text-white mb-40">
       <Toaster position="bottom-right" />
     <PlaceholderVanish />
-     <div className=" font-medium text-gray-300 m-5 flex justify-center gap-10 mb-10 mt-20 ">
+     <div className=" font-medium text-gray-300 m-5 grid grid-cols-2 sm:flex justify-center gap-10 mb-10 mt-20 ">
       <div>
         <div className=" justify-center flex"> 
         <Mail/>
@@ -59,21 +59,21 @@ export default function Contact({forwardedRef}:any){
         <DockIcon/>
         </div>
         <a href="/sudheer_chaurasia.pdf" target="_blank">
-        <span>My CV</span></a>
+        <span className=" flex justify-center">My CV</span></a>
       </div>
       <div>
         <div className=" flex justify-center">
           <Linkedin/>
         </div>
         <a href="https://www.linkedin.com/in/sudheer-8075121a0/" target="_blank">
-        <span>sudheer chaurasia</span></a>
+        <span className=" flex justify-center">sudheer chaurasia</span></a>
       </div>
       <div>
         <div className=" flex justify-center">
           <Github/>
         </div>
         <a href="https://github.com/sudheer0071" target="_blank" >
-        <span>sudheer0071</span></a>
+        <span className=" flex justify-center">sudheer0071</span></a>
       </div> 
      </div>
     </div>

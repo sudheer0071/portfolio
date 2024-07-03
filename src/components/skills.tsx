@@ -5,7 +5,7 @@ import React, {  useRef }  from "react";
 import { Space_Grotesk } from "next/font/google";
 import { motion } from "framer-motion";
 import {   useRecoilState, useSetRecoilState } from "recoil";
-import { aboutHoverState,   aboutState,   contactHoverState, contactState, projectHoverState,  projectState,  scrollState,  skillHoverState, skillState } from "@/app/recoilContextProvider";
+import { aboutHoverState,   aboutState,   contactHoverState, contactState, projectHoverState,  projectState,  scrollState,  skillHoverState, skillState, smallState } from "@/app/recoilContextProvider";
 import handleViewport from "react-in-viewport";
 const space = Space_Grotesk({ subsets: ["latin"], weight: "400" });
 
@@ -162,6 +162,7 @@ const setProject = useSetRecoilState(projectState)
 const setContact = useSetRecoilState(contactState)
 
 const [scrolling] = useRecoilState(scrollState)
+const [small] = useRecoilState(smallState)
 
 
 const ref = useRef(null)
@@ -171,7 +172,7 @@ const ref = useRef(null)
         <div className="flex justify-center flex-col viewport-block">
       <div className="flex items-center justify-center">
         <motion.span
-          initial={{ scale: 0.8, x: -100, opacity: 0 }}
+          initial={{ scale: 0.8, x: small?-80:-200, opacity: 0 }}
           whileInView={{ scale: 1, x: 0, opacity: 1 }}
           transition={{
             duration: 1,
@@ -182,7 +183,7 @@ const ref = useRef(null)
            
           onLoadedData={()=>  {console.log("loaded");
            setSkillHover(true)}}
-          className=" text-3xl text-purple-500 md:text-5xl font-bold"
+          className=" text-5xl text-purple-500 md:text-5xl font-bold"
         >{`<`}</motion.span>
         <motion.span
           initial={{ scale: 0.2, opacity: 0 }}
@@ -198,7 +199,7 @@ const ref = useRef(null)
           Skills
         </motion.span>
         <motion.span
-          initial={{ scale: 0.8, x: 100, opacity: 0 }}
+          initial={{ scale: 0.8, x: small?80:200, opacity: 0 }}
           whileInView={{ scale: 1, x: 0, opacity: 1 }}
           transition={{
             duration: 1,
@@ -206,7 +207,7 @@ const ref = useRef(null)
             stiffness: 260,
             damping: 20,
           }}
-          className=" text-3xl text-purple-500 md:text-5xl font-bold"
+          className=" text-5xl text-purple-500 md:text-5xl font-bold"
         >{`/>`}</motion.span>
       </div>
       <div className="flex justify-center gap-10 mt-10 flex-wrap">
