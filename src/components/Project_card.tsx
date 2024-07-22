@@ -429,7 +429,7 @@ export default function ProjectCard({forwardedRef}:any){
           <CardItem translateZ={100} className=" w-full mt-4">  
             <img src={`https://pub-e8df4856c93040158123b7cc75760e95.r2.dev/${project.src}.png`} height={1000} width={1000} className=" h-60 w-full rounded-xl g group-hover/card:shadow-2xl group-hover/card:shadow-black-500" alt="swasthlekh " />
           </CardItem> 
-          <div className="flex justify-center items-center mt-7 gap-5 text-white">
+          <div className="grid grid-cols-8 lg:flex justify-center items-center mt-7 gap-0 lg:gap-5 text-white">
           {project.techStack.map((tech,idx)=>(
             <Image
             src={`/${tech}`}
